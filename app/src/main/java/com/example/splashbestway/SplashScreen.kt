@@ -1,6 +1,6 @@
 package com.example.splashbestway
 
-import android.animation.ObjectAnimator
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,33 +8,32 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.view.animation.AnticipateInterpolator
-import android.widget.ImageView
-import androidx.core.animation.doOnEnd
+import com.example.splashbestway.databinding.ActivitySplashScreenBinding
+
 
 //This line add in android 12 and Above
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
 
-    lateinit var iconView: ImageView
+    lateinit var binding: ActivitySplashScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.AppTheme)
-        setContentView(R.layout.activity_splash_screen)
-        iconView = findViewById(R.id.imageView)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val slide_up: Animation =
+        val slideUp: Animation =
             AnimationUtils.loadAnimation(this, R.anim.slide_down)
-        iconView.animation = slide_up
+        binding.imageView.animation = slideUp
 
-        slide_up.setAnimationListener(object :Animation.AnimationListener{
+        slideUp.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {
 
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                iconView.visibility = View.GONE
+                binding.imageView.visibility = View.GONE
                 startActivity(Intent(this@SplashScreen, MainActivity::class.java))
                 finish()
             }
