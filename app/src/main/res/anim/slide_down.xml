@@ -3,15 +3,20 @@
     android:shareInterpolator="false">
 
     <rotate
-        android:duration="2000"
+        android:duration="1500"
         android:fromDegrees="0"
         android:pivotX="50%"
         android:pivotY="50%"
         android:toDegrees="360" />
 
     <translate
-        android:duration="2000"
+        android:duration="1500"
         android:fromYDelta="0%"
         android:toYDelta="-200%" />
+
+    <alpha
+        android:duration="1500"
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0" />
 
 </set>
